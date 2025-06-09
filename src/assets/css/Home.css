@@ -1,0 +1,31 @@
+.home {
+  background-color: #004d40; 
+  color: white; 
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.home-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.home-subtitle {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.home-button {
+  background-color: #a5f2a5; 
+  color: #003b3b; 
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.home-button:hover {
+  background-color: #8ce98c;
+}
