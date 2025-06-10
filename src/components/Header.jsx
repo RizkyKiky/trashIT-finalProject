@@ -11,6 +11,7 @@ export default function Header() {
             <Link
               to="/"
               className="text-header-link hover:text-header-link-hover font-medium text-base transition-colors"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               Home
             </Link>
