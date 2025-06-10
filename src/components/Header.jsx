@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -7,36 +8,36 @@ export default function Header() {
         <div className="flex justify-between items-center">
           <h1 className="text-4xl font-bold text-header-title">Trash-It</h1>
           <nav className="flex gap-5">
-            <a
-              href="hero"
+            <Link
+              to="/"
               className="text-header-link hover:text-header-link-hover font-medium text-base transition-colors"
             >
               Home
-            </a>
+            </Link>
             <a
-              href="about"
+              href="#about"
               className="text-header-link hover:text-header-link-hover font-medium text-base transition-colors"
             >
               About
             </a>
             <a
-              href="services"
+              href="#services"
               className="text-header-link hover:text-header-link-hover font-medium text-base transition-colors"
             >
               Services
             </a>
             <a
-              href="contact"
+              href="#contact"
               className="text-header-link hover:text-header-link-hover font-medium text-base transition-colors"
             >
               Contact
             </a>
-            <a
-              href="SignIn"
+            <Link
+              to="/signin"
               className="text-header-link hover:text-header-link-hover font-medium text-base transition-colors"
             >
               Sign In
-            </a>
+            </Link>
           </nav>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -23,6 +24,10 @@ export default function RegisterPage() {
       alert("Passwords don't match!");
       return;
     }
+    if (!formData.terms) {
+      alert("You must accept the Terms and Conditions!");
+      return;
+    }
     try {
       // Ganti URL dengan endpoint API yang sesuai
       const response = await axios.post("YOUR_REGISTER_API_URL", {
@@ -38,29 +43,29 @@ export default function RegisterPage() {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <section className="bg-gradient-to-br from-green-200 via-blue-100 to-blue-300 min-h-screen flex items-center justify-center">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto w-full max-w-md mt-28">
         <a
           href="#"
-          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
+          className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
         >
           <img
-            className="w-8 h-8 mr-2"
+            className="w-10 h-10 mr-2"
             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
             alt="logo"
           />
-          Flowbite
+          <span className="text-green-700">Trash-It</span>
         </a>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+        <div className="w-full bg-white rounded-lg shadow-lg border border-gray-200">
+          <div className="p-6 space-y-6">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               Create an account
             </h1>
-            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900"
                 >
                   Your email
                 </label>
@@ -68,7 +73,7 @@ export default function RegisterPage() {
                   type="email"
                   name="email"
                   id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   placeholder="name@company.com"
                   required
                   value={formData.email}
@@ -78,7 +83,7 @@ export default function RegisterPage() {
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900"
                 >
                   Password
                 </label>
@@ -87,7 +92,7 @@ export default function RegisterPage() {
                   name="password"
                   id="password"
                   placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   required
                   value={formData.password}
                   onChange={handleChange}
@@ -96,7 +101,7 @@ export default function RegisterPage() {
               <div>
                 <label
                   htmlFor="confirmPassword"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900"
                 >
                   Confirm password
                 </label>
@@ -105,7 +110,7 @@ export default function RegisterPage() {
                   name="confirmPassword"
                   id="confirmPassword"
                   placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   required
                   value={formData.confirmPassword}
                   onChange={handleChange}
@@ -117,20 +122,17 @@ export default function RegisterPage() {
                     id="terms"
                     name="terms"
                     type="checkbox"
-                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-2 focus:ring-blue-500"
                     required
                     checked={formData.terms}
                     onChange={handleChange}
                   />
                 </div>
                 <div className="ml-3 text-sm">
-                  <label
-                    htmlFor="terms"
-                    className="font-light text-gray-500 dark:text-gray-300"
-                  >
+                  <label htmlFor="terms" className="font-light text-gray-500">
                     I accept the{" "}
                     <a
-                      className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                      className="font-medium text-blue-600 hover:underline"
                       href="#"
                     >
                       Terms and Conditions
@@ -140,18 +142,18 @@ export default function RegisterPage() {
               </div>
               <button
                 type="submit"
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
-                Create an account
+                Create account
               </button>
-              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+              <p className="text-sm font-light text-gray-500 text-center">
                 Already have an account?{" "}
-                <a
-                  href="#"
-                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                <Link
+                  to="/signin"
+                  className="font-medium text-blue-600 hover:underline"
                 >
                   Login here
-                </a>
+                </Link>
               </p>
             </form>
           </div>
