@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -8,6 +8,8 @@ export default function LoginPage() {
     password: '',
     remember: false,
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -19,6 +21,7 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    navigate('/admindashboard');
     try {
       // Ganti URL dengan endpoint API yang sesuai
       const response = await axios.post('YOUR_LOGIN_API_URL', formData);
