@@ -14,10 +14,7 @@ export default function Service() {
               Setor sampahmu dan dapatkan manfaatnya! Klik tombol di bawah untuk
               mulai input data sampah yang ingin kamu setor.
             </p>
-            <Link
-              to="/input-sampah"
-              className="btn btn-success w-full text-lg py-3"
-            >
+            <Link to="/signin" className="btn btn-success w-full text-lg py-3">
               Input Bank Sampah
             </Link>
           </div>
