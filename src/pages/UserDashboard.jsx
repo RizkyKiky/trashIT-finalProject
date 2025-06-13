@@ -3,7 +3,6 @@ import React from "react";
 export default function UserDashboard() {
   return (
     <div className="min-h-screen bg-[#f6fbfc]">
-      return <h1 style={{ color: "green" }}>HALAMAN USER DASHBOARD</h1>;
       {/* Header */}
       <div className="bg-[#13c8c8] py-8 px-4 flex flex-col items-center">
         <h1 className="text-4xl font-bold text-white tracking-wide mb-2">
