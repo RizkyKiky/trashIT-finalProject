@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -26,40 +27,42 @@ export default function Header() {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a href="#home">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="#about">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <a href="#services">Services</a>
+              <Link to="/service">Services</Link>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <Link to="/contact">Contact</Link>
             </li>
             <li>
-              <a href="/signin">Sign In</a>
+              <Link to="/signin">Sign In</Link>
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Trash-It</a>
+        <Link to="/" className="btn btn-ghost text-xl">
+          Trash-It
+        </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a href="#home">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="#about">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="#services">Services</a>
+            <Link to="/service">Services</Link>
           </li>
           <li>
-            <a href="#contact">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
           <li>
-            <a href="/signin">Sign In</a>
+            <Link to="/signin">Sign In</Link>
           </li>
         </ul>
       </div>

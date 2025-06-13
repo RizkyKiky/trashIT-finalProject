@@ -1,13 +1,8 @@
-import React from "react";
-import Hero from "./Hero";
-import About from "./About";
+import React from 'react'
 
-export default function Home() {
+export default function Contact() {
   return (
-    <>
-      <Hero />
-      <About />
-
+    <div>
       {/* Contact Us Section */}
       <section id="contact" className="bg-white dark:bg-gray-900">
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
@@ -72,6 +67,7 @@ export default function Home() {
           </form>
         </div>
       </section>
-    </>
-  );
+    </div>
+  )
 }
+
