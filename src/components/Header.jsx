@@ -39,6 +39,12 @@ export default function Header() {
             >
               Sign In
             </Link>
+            <Link
+              to="/user"
+              className="text-header-link hover:text-header-link-hover font-medium text-base transition-colors"
+            >
+              User
+            </Link>
           </nav>
         </div>
       </div>
