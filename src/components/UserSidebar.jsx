@@ -1,15 +1,18 @@
 import React from "react";
 
 export default function UserSidebar() {
+  // Nama user default "User"
+  const userName = "User";
+
   return (
-    <aside className="w-64 bg-white shadow-lg min-h-[calc(100vh-120px)]">
+    <aside className="w-64 bg-white shadow-lg min-h-screen">
       <div className="flex flex-col items-center py-8 border-b">
         <div className="avatar mb-2">
           <div className="w-16 rounded-full bg-yellow-300 flex items-center justify-center text-3xl font-bold text-cyan-500">
-            M
+            {userName.charAt(0).toUpperCase()}
           </div>
         </div>
-        <div className="text-cyan-500 text-xl font-bold">Makki</div>
+        <div className="text-cyan-500 text-xl font-bold">{userName}</div>
         <button className="btn btn-xs btn-outline btn-info mt-2">
           Profile
         </button>
