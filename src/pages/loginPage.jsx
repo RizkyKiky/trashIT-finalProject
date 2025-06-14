@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import trashitLogo from '../images/trashit.png';
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -37,7 +38,7 @@ export default function LoginPage() {
     <section className="bg-gradient-to-br from-green-200 via-blue-100 to-blue-300 min-h-screen flex items-center justify-center">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto w-full max-w-md mt-25">
         <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
-          <img className="w-10 h-10 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
+          <img className="w-10 h-10 mr-2" src={trashitLogo} alt="logo" />
           <span className="text-green-700">Trash-It</span>
         </a>
         <div className="w-full bg-white rounded-lg shadow-lg border border-gray-200">
@@ -74,7 +75,7 @@ export default function LoginPage() {
                   onChange={handleChange}
                 />
               </div>
-              <button type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+              <button type="submit" className="w-full text-white bg-green-800 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                 Sign in
               </button>
               <p className="text-sm font-light text-gray-500 text-center">
