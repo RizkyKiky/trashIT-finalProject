@@ -1,42 +1,72 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext"; // <-- Tambahkan ini
 
 export default function UserSidebar() {
-  // Nama user default "User"
-  const userName = "User";
+  const { user } = useContext(AuthContext); // <-- Ambil user dari context
+  const location = useLocation();
+
+  function isActive(path) {
+    return location.pathname === path;
+  }
+
+  const userName = user?.data?.username || "User";
+
+  // fallback jika user belum tersedia
 
   return (
-    <aside className="w-64 bg-white shadow-lg min-h-screen">
-      <div className="flex flex-col items-center py-8 border-b">
+    <aside className="w-64 bg-white border-r border-green-200 min-h-screen shadow-md">
+      <div className="flex flex-col items-center py-8 border-b border-green-100">
         <div className="avatar mb-2">
-          <div className="w-16 rounded-full bg-yellow-300 flex items-center justify-center text-3xl font-bold text-cyan-500">
+          <div className="w-16 h-16 rounded-full bg-yellow-300 flex items-center justify-center text-3xl font-bold text-green-600">
             {userName.charAt(0).toUpperCase()}
           </div>
         </div>
-        <div className="text-cyan-500 text-xl font-bold">{userName}</div>
-        <button className="btn btn-xs btn-outline btn-info mt-2">
-          Profile
-        </button>
+        <div className="text-green-700 text-lg font-semibold">{userName}</div>
+        <Link
+          to="/user/profile"
+          className="btn btn-xs btn-outline btn-success mt-2"
+        >
+          Lihat Profil
+        </Link>
       </div>
-      <ul className="menu p-4 text-base">
+
+      <ul className="menu p-4 text-base text-green-800 space-y-2">
         <li>
-          <a className="font-semibold text-cyan-500">
-            <span className="mr-2">🏠</span> Dashboard
-          </a>
+          <Link
+            to="/user"
+            className={`flex items-center px-2 py-2 rounded ${
+              isActive("/user")
+                ? "bg-green-100 text-green-800 font-semibold"
+                : "hover:text-green-600"
+            }`}
+          >
+            <span className="mr-2 text-xl">🏠</span> Dashboard
+          </Link>
         </li>
         <li>
-          <a>
-            <span className="mr-2">🛠️</span> Services
-          </a>
+          <Link
+            to="/user/waste-deposit"
+            className={`flex items-center px-2 py-2 rounded ${
+              isActive("/user/waste-deposit")
+                ? "bg-green-100 text-green-800 font-semibold"
+                : "hover:text-green-600"
+            }`}
+          >
+            <span className="mr-2 text-xl">🗑️</span> Setor Sampah
+          </Link>
         </li>
         <li>
-          <a>
-            <span className="mr-2">💸</span> Transactions
-          </a>
-        </li>
-        <li>
-          <a>
-            <span className="mr-2">⭐</span> My Favorites
-          </a>
+          <Link
+            to="/user/history"
+            className={`flex items-center px-2 py-2 rounded ${
+              isActive("/user/history")
+                ? "bg-green-100 text-green-800 font-semibold"
+                : "hover:text-green-600"
+            }`}
+          >
+            <span className="mr-2 text-xl">📜</span> Riwayat
+          </Link>
         </li>
       </ul>
     </aside>

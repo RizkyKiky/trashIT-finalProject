@@ -1,22 +1,23 @@
 import React from "react";
 
 // Komponen Card Dashboard
-function DashboardCard(props) {
-  // props: title (judul), value (angka), unit (satuan)
+export default function DashboardCard(props) {
+  const { title, value, unit, icon } = props;
+
   return (
-    <div className="card bg-white shadow-md flex flex-row items-center p-4 mb-4">
+    <div className="card bg-white shadow-lg flex flex-row items-center p-4 rounded-lg border border-green-200">
       {/* Icon lingkaran */}
-      <div className="bg-cyan-400 rounded-full p-3 mr-4">
-        {/* Icon tempat sampah sederhana */}
-        <span role="img" aria-label="trash" className="text-white text-2xl">
-          🗑️
+      <div className="bg-green-500 rounded-full p-3 mr-4">
+        <span role="img" aria-label="icon" className="text-white text-2xl">
+          {icon || "📦"}
         </span>
       </div>
+
       {/* Isi card */}
       <div>
-        <div className="font-bold text-lg">{props.title}</div>
-        <div className="text-gray-500">
-          ({props.value}) {props.unit}
+        <div className="font-bold text-lg text-green-700">{title}</div>
+        <div className="text-gray-600">
+          <span className="font-semibold">{value}</span> {unit}
         </div>
       </div>
     </div>
