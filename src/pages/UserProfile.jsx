@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import UserSidebar from "../components/UserSidebar"; // Pastikan path-nya sesuai
+import { useNavigate } from "react-router-dom";
+import UserSidebar from "../components/UserSidebar";
 
 export default function UserProfile() {
   const [form, setForm] = useState({
@@ -9,6 +10,39 @@ export default function UserProfile() {
     email: "",
     phone: "",
   });
+
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/signin");
+      return;
+    }
+
+    axios
+      .get("http://localhost:8091/api/user", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        const userData = res.data;
+        setForm({
+          name: userData.name || "",
+          username: userData.username || "",
+          email: userData.email || "",
+          phone: userData.phone || "",
+        });
+      })
+      .catch((err) => {
+        console.error("Gagal memuat data user:", err);
+        alert("Gagal memuat profil. Silakan login ulang.");
+        localStorage.removeItem("token");
+        navigate("/signin");
+      })
+      .finally(() => setLoading(false));
+  }, [navigate]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -43,6 +77,14 @@ export default function UserProfile() {
         console.error("Gagal update profil:", error);
         alert("Gagal mengupdate profil.");
       });
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-green-50">
+        <p className="text-gray-500">Memuat data profil...</p>
+      </div>
+    );
   }
 
   return (
