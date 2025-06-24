@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 
 // Pages
@@ -15,7 +15,7 @@ import UserHistory from "./pages/UserHistory";
 function App() {
   const location = useLocation();
 
-  const hideHeaderRoutes = ['/admindashboard'];
+  const hideHeaderRoutes = ["/admindashboard"];
   return (
     <AuthProvider>
       <Routes>
