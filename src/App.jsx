@@ -1,28 +1,39 @@
-import './App.css';
-import Header from './components/Header';
-import Home from './components/Home';
-import Footer from './components/Footer';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import AdminDashboard from './pages/AdminDashboard';
-import UserDashboard from './pages/UserDashboard';
-import { Routes, Route } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+
+// Pages
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import AdminDashboard from "./pages/AdminDashboard";
+import UserDashboard from "./pages/UserDashboard";
+import UserProfile from "./pages/UserProfile";
+import UserWasteDeposit from "./pages/UserWasteDeposit";
+import UserHistory from "./pages/UserHistory";
 
 function App() {
   const location = useLocation();
 
   const hideHeaderRoutes = ['/admindashboard'];
   return (
-    <>
-      {!hideHeaderRoutes.includes(location.pathname) && <Header />}
+    <AuthProvider>
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* Halaman utama - anchor seperti #about akan tetap berada di / */}
+        <Route path="/" element={<HomePage />} />
+
+        {/* Auth */}
         <Route path="/signin" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/admindashboard" element={<AdminDashboard />} />
+
+        {/* Admin & User */}
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/user" element={<UserDashboard />} />
+        <Route path="/user/profile" element={<UserProfile />} />
+        <Route path="/user/waste-deposit" element={<UserWasteDeposit />} />
+        <Route path="/user/history" element={<UserHistory />} />
       </Routes>
-    </>
+    </AuthProvider>
   );
 }
 
